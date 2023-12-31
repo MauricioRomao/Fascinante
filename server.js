@@ -2,7 +2,10 @@ const express = require('express')
 const app = express()
 const handlebars = require('express-handlebars')
 const body_parser = require('body-parser')
-const post = require('./models/Post')
+
+const Agendas = require('./models/Agendas')
+const servicos = require('./models/servicos')
+const { json } = require('sequelize')
 
 
 // config, 
@@ -18,12 +21,25 @@ app.use(body_parser.json())
 
 
 app.get('/', (req,res)=>{
-res.render('index')
+res.render('home')
 })
+app.get('/teste', (req, res)=>{
 
+  res.send('funciounou')
+})
+app.use(json)
+const teste =  {
+  nome:'mauricio',
+  idade:12,
+  corno:'talvez'
+}
+app.get('/tester', (requ,res)=>{
+ 
+ console.log(json(teste))
+   
+ return res.status(201).send()
 
-
-// routs 
+})
 
 
  app.post('/add', (req, res)=>{
