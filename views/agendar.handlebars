@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar</title>
+</head>
+
+<body>
+    <main class="main">
+
+        <form action="servicos" method="post">
+
+            <p>Seleciona o Serviço</p>
+            <select id="Select" class="input">
+                <option value="cortar o cabelo">Cortar o cabelo</option>
+                <option value="lavar o cabelo">Lavar o cabelo</option>
+                <option value="rosto">Cuidar do rosto</option>
+            </select>
+
+            <p>Agendar</p>
+            <input type="date" class="input">
+            <br>
+             <p>Agendar em uma hora</p> 
+            <input type="time" class="input">
+            
+            <button type="submit" class="agendar_btn">Agendar</button>
+        </form>
+       
+    </main>
+
+    <style>
+        * {}
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .main {
+
+            width: 900px;
+            height: 700px;
+            border-radius: 10px;
+            box-shadow: 10px 10px 1000px 30px rgb(181, 207, 255);
+
+
+
+        }
+
+        form {
+            text-align: center;
+            margin: 30px auto;
+            font-family: sans-serif;
+        }
+
+        form p {
+            font-size: 17px;
+        }
+
+        .input {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid rgb(34, 34, 109);
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 60px;
+            text-align: center;
+            color: rgb(34, 34, 109);
+        }
+        .agendar_btn{
+            width: 70%;
+            padding: 10px;
+            font-size: 17px;
+            background-color: pink;
+            border: 1px solid white;
+            color: rgb(15, 15, 51);
+            
+        }
+    </style>
+</body>
+
+</html>
