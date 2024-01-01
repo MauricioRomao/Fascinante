@@ -4,7 +4,8 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 const Agendas = require('./models/Agendas');
-const cliente =  require('./models/cliente')
+const cliente = require('./models/cliente')
+
 
 app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -22,13 +23,14 @@ app.get('/', (req, res) => {
 /*  rota post e get para a criação de servicos */
 
 app.get('/agendar', (req, res) => {
-res.render('agendar')
+  res.render('agendar')
+
 });
 
 app.post('/agendar', (req, res) => {
-  servicos.create({
-    Cabelo: req.body.Cabelo,
-    descricao: req.body.descricao 
+  Agendas.create({
+    servico: req.body.servico,
+    date: req.body.data
   })
     .then(() => {
       res.redirect('/');
@@ -44,23 +46,23 @@ app.post('/agendar', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.render('login')
-  });
+});
   
-  app.post('/agendar', (req, res) => {
-    agendar.create({
-      Cabelo: req.body.Cabelo,
-      descricao: req.body.descricao 
+app.post('/agendar', (req, res) => {
+  agendar.create({
+    servico: req.body.servico,
+    date: req.body.date
+  })
+    .then(() => {
+      res.redirect('/');
     })
-      .then(() => {
-        res.redirect('/');
-      })
-      .catch((error) => {
-        console.error('Erro na conexão:', error);
-        res.status(500).send('Erro interno no servidor');
-      });
-  });
-  /* fim desta rota */
-  
+    .catch((error) => {
+      console.error('Erro na conexão:', error);
+      res.status(500).send('Erro interno no servidor');
+    });
+});
+/* fim desta rota */
+
 
 const PORT = 8081;
 app.listen(PORT, () => {
