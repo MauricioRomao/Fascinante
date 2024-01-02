@@ -11,6 +11,6 @@ const Agendas  =  db.sequelize.define('Agenda', {
     }
 })
 /*
-cliente.sync({force:true})
+Agendas.sync({force:true})
 */
 module.exports = Agendas

@@ -9,7 +9,5 @@ const cliente = db.sequelize.define('cliente',{
     }
 
 })
-/*
-cliente.sync({force:true})
-*/
+
 module.exports = cliente

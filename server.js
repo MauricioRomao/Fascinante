@@ -3,8 +3,10 @@ const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 
+
 const Agendas = require('./models/Agendas');
-const cliente = require('./models/cliente')
+const cliente = require('./models/cliente');
+const { json } = require('sequelize');
 
 
 app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
@@ -14,10 +16,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.render('home');
+
+  res.render('home')
+
 });
 
 
+
+
+/* rota de administração */
+
+app.get('/admin', (req, res)=>{
+  cliente.findAll().then(function (cliente) {
+    const nomesClientes = cliente.map(cliente => cliente.Nome);
+    res.render('secure', { nomesClientes });
+})
+
+
+cliente.findAll().then(function (cliente) {
+  const EmailClientes = cliente.map(cliente => cliente.Email);
+  res.render('secure', { EmailClientes });
+})  
+})
 
 
 /*  rota post e get para a criação de servicos */
@@ -47,7 +67,7 @@ app.post('/agendar', (req, res) => {
 app.get('/login', (req, res) => {
   res.render('login')
 });
-  
+
 app.post('/agendar', (req, res) => {
   agendar.create({
     servico: req.body.servico,
@@ -64,7 +84,7 @@ app.post('/agendar', (req, res) => {
 /* fim desta rota */
 
 
-const PORT = 8081;
+const PORT = 8082;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

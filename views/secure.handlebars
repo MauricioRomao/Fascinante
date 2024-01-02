@@ -1,0 +1,38 @@
+<h3> - listando todos os nomes </h3>
+<ul>
+    {{#each nomesClientes}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+
+
+
+
+
+
+
+
+<br>
+
+<h3>
+    - listando todos os emais no banco de dados
+</h3>
+<ul>
+    {{#each EmailClientes}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+
+
+<style>
+    h3{
+        text-align: center;
+        margin-top: 30px;
+            }
+    li {
+        font-size: medium;
+        font-family: sans-serif;
+        text-align: center;
+        margin: 5px;
+    }
+</style>
