@@ -27,16 +27,30 @@ app.get('/', (req, res) => {
 /* rota de administração */
 
 app.get('/admin', (req, res)=>{
-  cliente.findAll().then(function (cliente) {
-    const nomesClientes = cliente.map(cliente => cliente.Nome);
-    res.render('secure', { nomesClientes });
+//   cliente.findAll().then(function (cliente) {
+//     const nomesClientes = cliente.map(cliente => cliente.Nome);
+//     res.render('secure', { nomesClientes });
+// })
+
+
+// cliente.findAll().then(function (cliente) {
+//   const EmailClientes = cliente.map(cliente => cliente.Email);
+//   res.render('secure', { EmailClientes });
+// })
+res.render('secure')
+
+
 })
+app.post('/admin', (req,res)=>{
+  const nome = req.body.name;
+  const senha = req.body.senha;
 
+  // Fazer algo com os dados
+  console.log('Nome:', nome);
+  console.log('Email:', senha);
 
-cliente.findAll().then(function (cliente) {
-  const EmailClientes = cliente.map(cliente => cliente.Email);
-  res.render('secure', { EmailClientes });
-})  
+  // Responder ao cliente
+  res.send('Formulário processado com sucesso!');
 })
 
 
@@ -46,6 +60,8 @@ app.get('/agendar', (req, res) => {
   res.render('agendar')
 
 });
+
+
 
 app.post('/agendar', (req, res) => {
   Agendas.create({

@@ -1,7 +1,9 @@
 <Header class="header">
     <div class="header_nav">
         <div class="logo">
-          
+            <img src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-spa-logo-png-image_5826148.png"
+                alt="Fascinante logo">
+
         </div>
         <nav>
             <li><a href="#">Home</a></li>
@@ -10,7 +12,7 @@
         </nav>
 
         <div class="agendar">
-            <a href="http://localhost:8082/authenticate">Login</a>
+            <a href="http://localhost:8082/authenticate">Minha Conta</a>
         </div>
     </div>
     <div class="principal_content">
@@ -25,20 +27,18 @@
                 Vem tratar do teu visual e mude a sua <br> aparência connosco
             </p>
             <div class="btn_agendar">
-            
-                
-                <a href="#"> « Agendar » </a>
+
+
+                <a href="#"> « Agendamentos » </a>
             </div>
         </div>
         <div class="content_image">
-
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1BSUjSBmahW6h5SMMga0CIn8Ma5mIKD7yKQ&usqp=CAU"
+                alt="imagem fascinante">
         </div>
-        
+
     </div>
-    <script>
-         const letra = 'teste'
-        const logo_main = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtKxSygEpA7_eCw9oh5VOUeobtDdtNPUxoEb39-OF8A&s'
-    </script>
+
 </Header>
 
 <style>
@@ -46,6 +46,12 @@
 
         width: 100%;
         height: 100vh;
+    }
+
+    .header .logo img {
+        margin: 160px auto;
+        height: 130px;
+
     }
 
     .header_nav {
@@ -68,10 +74,11 @@
         font-family: sans-serif;
         padding: 10px;
 
+
     }
 
     .header_nav li a:hover {
-        background-color: rgb(209, 143, 154);
+        background-color: rgb(15, 15, 51);
         color: white;
         border-radius: 10px;
         transition: 0.5s background;
@@ -100,8 +107,9 @@
     }
 
     .content_text h1 {
-        font-size: 26px;
-        color: rgb(189, 138, 146);
+        font-size: 29px;
+        color: rgb(230, 90, 206);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
     .content_text p {
@@ -113,6 +121,11 @@
         margin: 40px auto
     }
 
+    .content_image {
+        margin-right: 80px;
+        background-color: rgb(230, 90, 206);
+    }
+    
     .btn_agendar a {
         font-family: sans-serif;
         background-color: rgb(15, 15, 51);
@@ -120,5 +133,6 @@
         color: white;
         font-size: 18px;
         border-radius: 15px;
+        
     }
 </style>
