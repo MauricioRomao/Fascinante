@@ -4,19 +4,35 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 
+/* Models*/
 const Agendas = require('./models/Agendas');
 const cliente = require('./models/cliente');
 const { json } = require('sequelize');
 
+/* Routes */
 
+const admin = require('./routes/admin')
+const agendar = require('./routes/agendas')
+
+
+/*config */
 app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+/* <!--------------> */
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
 
+/* <!-- Admin ------> */
+
+app.use('/controller', admin)
+app.use('/controller', agendar)
+
+/* principal route */
+
+app.get('/', (req, res) => {
   res.render('home')
 
 });
@@ -24,80 +40,10 @@ app.get('/', (req, res) => {
 
 
 
-/* rota de administração */
-
-app.get('/admin', (req, res)=>{
-//   cliente.findAll().then(function (cliente) {
-//     const nomesClientes = cliente.map(cliente => cliente.Nome);
-//     res.render('secure', { nomesClientes });
-// })
-
-
-// cliente.findAll().then(function (cliente) {
-//   const EmailClientes = cliente.map(cliente => cliente.Email);
-//   res.render('secure', { EmailClientes });
-// })
-res.render('secure')
-
-
-})
-app.post('/admin', (req,res)=>{
-  const nome = req.body.name;
-  const senha = req.body.senha;
-
-  // Fazer algo com os dados
-  console.log('Nome:', nome);
-  console.log('Email:', senha);
-
-  // Responder ao cliente
-  res.send('Formulário processado com sucesso!');
-})
-
-
-/*  rota post e get para a criação de servicos */
-
-app.get('/agendar', (req, res) => {
-  res.render('agendar')
-
-});
 
 
 
-app.post('/agendar', (req, res) => {
-  Agendas.create({
-    servico: req.body.servico,
-    date: req.body.data
-  })
-    .then(() => {
-      res.redirect('/');
-    })
-    .catch((error) => {
-      console.error('Erro na conexão:', error);
-      res.status(500).send('Erro interno no servidor');
-    });
-});
-/* fim desta rota */
 
-/*  rota post e get para  login */
-
-app.get('/login', (req, res) => {
-  res.render('login')
-});
-
-app.post('/agendar', (req, res) => {
-  agendar.create({
-    servico: req.body.servico,
-    date: req.body.date
-  })
-    .then(() => {
-      res.redirect('/');
-    })
-    .catch((error) => {
-      console.error('Erro na conexão:', error);
-      res.status(500).send('Erro interno no servidor');
-    });
-});
-/* fim desta rota */
 
 
 const PORT = 8082;

@@ -1,15 +1,8 @@
 const express = require('express')
 const router = express()
 
-
-
-router.get('/admin', (req, res) => {
-   res.render('secure')
+router.get('/agendar',(req,res)=>{
+    res.render('agendar')
 })
-
-  /* Post HTTP */
-
-
-
 
 module.exports = router
