@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 
 /* Models*/
-const Agendas = require('./models/Agendas');
+const Agendar = require('./models/Agendas');
 const cliente = require('./models/cliente');
 const { json } = require('sequelize');
 
@@ -27,8 +27,18 @@ app.use(bodyParser.json());
 
 /* <!-- Admin ------> */
 
-app.use('/controller', admin)
-app.use('/controller', agendar)
+app.get('/admin',(req,res)=>{
+  res.render('secure')
+})
+
+app.post('/admin',(req,res)=>{
+  res.render('secure')
+})
+
+
+/* <!-- Agendas ------> */
+
+app.use('/', agendar)
 
 /* principal route */
 

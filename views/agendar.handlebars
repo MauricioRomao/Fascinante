@@ -20,7 +20,7 @@
             </select>
     
             <p>Agendar</p>
-            <input type="date" class="input" name="">
+            <input type="date" class="input" name="date" min="" id="data">
             <br>
              <p>Agendar em uma hora</p> 
             <input type="time" class="input">
@@ -29,7 +29,13 @@
         </form>
        
     </main>
+<script>
 
+    const today = new Date().toISOString().split('T')[0];
+
+
+    document.getElementById('data').min = today;
+</script>
     <style>
         * {}
 
