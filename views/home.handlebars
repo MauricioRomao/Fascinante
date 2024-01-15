@@ -136,3 +136,19 @@
         
     }
 </style>
+   <input type="date" class="input" name="date" min="" id="data">
+            <br>
+             <p>Agendar em uma hora</p> 
+            <input type="time" class="input">
+            
+            <button type="submit" class="agendar_btn">Agendar</button>
+        </form>
+       
+    </main>
+<script>
+
+    const today = new Date().toISOString().split('T')[0];
+
+
+    document.getElementById('data').min = today;
+</script>
