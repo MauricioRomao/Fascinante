@@ -11,37 +11,37 @@
 
     <div class="container_content">
         <div class="services">
-            <div class="services_info" onclick='controller()'>
+            <div class="services_info" >
                 <h3>Lavar Cabelo</h3>
                 <p> 3.000 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" onclick='controller()'>
+            <div class="services_info" >
                 <h3>Fazer Brexe </h3>
                 <p> 3.500 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" onclick='controller()'>
+            <div class="services_info" >
                 <h3>Cortar o Cabelo</h3>
                 <p> 700 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" onclick='controller()'>
+            <div class="services_info" >
                 <h3>Sombracelhas</h3>
                 <p> 700 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" onclick='controller()'>
+            <div class="services_info" >
                 <h3>Fazer as Unhas </h3>
                 <p> 1.500 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" onclick='controller()'>
+            <div class="services_info" >
                 <h3>Lavar Rosto</h3>
                 <p> 3.000 Kz </p>
             </div>
@@ -61,7 +61,21 @@
 
 </div>
 
+<script>
+    const services = document.querySelectorAll('.services_info')
+    services.forEach(function(service){
+        service.addEventListener('click', function(){
+            const paragrafo =  service.querySelector('h3')
+            if(paragrafo){
+                console.log(paragrafo)
+            }
+            else{
+                console.log('não existe paragrafos para serem apresenados')
+            }
+        })
 
+    })
+</script>
 
 <style>
     * {
@@ -149,14 +163,3 @@
     }
 </style>
 
-<script>
-   
-   const controller = function (e){
-    const value = e.target
-    console.log(value)
-   }
-
-
-
-
-</script>
