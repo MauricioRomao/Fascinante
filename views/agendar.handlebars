@@ -4,45 +4,42 @@
         <h3>
             Nossos Serviços
         </h3>
-        <h3>
-            Seleciona um serviço
-        </h3>
     </div>
 
     <div class="container_content">
         <div class="services">
-            <div class="services_info" >
-                <h3>Lavar Cabelo</h3>
+            <div class="services_info">
+                <input type="text" disabled placeholder=" Lavar o cabelo" value="Lavar o cabelo">
                 <p> 3.000 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" >
-                <h3>Fazer Brexe </h3>
+            <div class="services_info">
+                <input type="text" disabled placeholder=" Fazer Brexe" value="Fazer brexe">
                 <p> 3.500 Kz </p>
             </div>
         </div>
-        <div class="services">
-            <div class="services_info" >
-                <h3>Cortar o Cabelo</h3>
+        <div class=" services">
+            <div class="services_info">
+                <input type="text" disabled placeholder=" Cortar o cabelo" value="Cortar o Cabelo">
                 <p> 700 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" >
-                <h3>Sombracelhas</h3>
+            <div class="services_info">
+                <input type="text" disabled placeholder=" Sombracelhas" value="Sombracelhas">
                 <p> 700 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" >
-                <h3>Fazer as Unhas </h3>
+            <div class="services_info">
+                <input type="text" disabled placeholder=" fazer as Unhas" value="Fazer as Unhas">
                 <p> 1.500 Kz </p>
             </div>
         </div>
         <div class="services">
-            <div class="services_info" >
-                <h3>Lavar Rosto</h3>
+            <div class="services_info">
+                <input type="text" disabled placeholder=" Lavar o Rosto" value="Lavar o Rosto">
                 <p> 3.000 Kz </p>
             </div>
         </div>
@@ -53,7 +50,6 @@
 
     <div class="function_aplication">
         <div class="back"> <a href="http://localhost:8082">Voltar</a></div>
-        <div class="Agendar_"> <a href="http://localhost:8082">Agendar</a></div>
     </div>
 
 
@@ -61,20 +57,67 @@
 
 </div>
 
+<dialog class="modal dialog">
+    <div class="content_dialog">
+
+        <div class="service_dialog">
+            <form action="post">
+                <a href="#" class="btn_back">x</a>
+
+                <p>
+                    Serviço Selecionado
+                </p>
+                <input type="text" disabled name="servico" class="input_servico font_">
+
+                <p>
+                    Agendar
+                </p>
+                <input type="date" name="servico" class="input_servico min">
+                <p>
+                    Marcar em uma hora
+                </p>
+                <input type="time" name="servico" class="input_servico">
+                <br>
+                <button class="agendar_btn">
+                    Agendar
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</dialog>
+
 <script>
     const services = document.querySelectorAll('.services_info')
-    services.forEach(function(service){
-        service.addEventListener('click', function(){
-            const paragrafo =  service.querySelector('h3')
-            if(paragrafo){
-                console.log(paragrafo)
+    const modal = document.querySelector('.dialog')
+    const input_servico = document.querySelector('.input_servico')
+    const btn_back = document.querySelector('.btn_back')
+
+
+    const back = function (e) {
+        e.preventDefault()
+        modal.classList.add('modal')
+    }
+    btn_back.addEventListener('click', back)
+
+    services.forEach(function (service) {
+
+        service.addEventListener('click', function () {
+            modal.classList.remove('modal')
+            const paragrafo = service.querySelector('input')
+            if (paragrafo) {
+                input_servico.value = paragrafo.value
+
             }
-            else{
-                console.log('não existe paragrafos para serem apresenados')
-            }
+            
         })
 
     })
+
+
 </script>
 
 <style>
@@ -100,10 +143,16 @@
 
     .header_container h3 {
         margin-top: 10px;
+        border: 1px solid blueviolet;
+        padding: 10px;
+        color: white;
+        background-color: blueviolet;
+        border-radius: 10px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
     }
 
     .container_content {
-        background-color: rgba(0, 0, 0, 0.1);
         width: 60%;
         margin: 100px auto;
         height: auto;
@@ -112,6 +161,7 @@
         justify-content: center;
         border-radius: 10px;
         padding: 20px;
+        box-shadow: 1px 3px 10px 22px rgba(0, 0, 0, 0.2);
     }
 
     .services {
@@ -121,36 +171,44 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 10px;
+        border-radius: 5px;
         cursor: pointer;
         margin: 10px;
+        border: 1px solid blueviolet;
     }
 
-    .services_info h3 {
+    .services_info input {
         color: rgb(10, 10, 88);
+        font-family: sans-serif;
+        text-align: center;
+        width: 150px;
+        padding: 10px;
+        background-color: white;
+        outline: none;
+        border: 1px solid white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
     .services_info p {
-        margin: 20px 30px;
+        margin: 20px 40px;
+        color: rgb(26, 5, 46);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
     }
 
-    .Agendar_ {
-        margin-right: 50px;
-    }
 
     .back {
         margin-left: 50px;
     }
 
-    .Agendar_ a,
     .back a {
-
-        background-color: rgb(10, 10, 88);
+        margin-top: 10px;
+        border-radius: 10px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: rgb(113, 16, 204);
         color: white;
         padding: 15px;
-        border-radius: 10px;
+        border-radius: 5px;
     }
 
     .function_aplication {
@@ -161,5 +219,100 @@
         bottom: 50px;
 
     }
-</style>
 
+
+
+    .dialog {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        overflow-y: hidden;
+        align-items: center;
+        position: absolute;
+        top: 0;
+
+    }
+
+    .modal {
+        display: none;
+    }
+
+    .dialog::backdrop {
+        background-color: rgb(168, 38, 38);
+    }
+
+    .content_dialog {
+        width: 70%;
+        height: 70%;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 1px 3px 81130px 22px rgb(159, 106, 245);
+
+
+    }
+
+    .service_dialog {
+        width: 100%;
+        text-align: center;
+        display: inline-block;
+        margin-top: 50px;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+
+    .service_dialog input {
+        margin-top: 30px;
+        border: 1px solid rgb(37, 3, 116);
+        width: 50%;
+        text-align: center;
+        padding: 5px;
+        font-size: 17px;
+        color: rgb(26, 5, 46);
+        font-family: sans-serif;
+        border-radius: 2px;
+    }
+
+    .service_dialog p,
+    .agendar_btn {
+        margin-top: 40px;
+        font-size: 16px;
+        font-family: sans-serif;
+        color: rgb(22, 7, 56);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .agendar_btn {
+        margin-top: 90px;
+        width: 90%;
+        padding: 10px;
+        background-color: pink;
+        outline: none;
+        border: none;
+        font-size: 18px;
+        transition: 0.5s ease-in-out background;
+    }
+
+    .agendar_btn:hover {
+        background-color: rgb(141, 93, 187);
+        color: white;
+    }
+
+    .btn_back {
+        float: right;
+        margin: -40px 50px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 40px;
+
+    }
+
+    .font_ {
+        padding: 20px !important;
+        width: 200px !important;
+        background-color: pink !important;
+        border: 1px solid white !important;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    }
+</style>
